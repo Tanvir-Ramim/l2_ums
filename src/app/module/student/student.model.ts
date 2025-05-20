@@ -1,11 +1,11 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose'
 import {
   StudentModel,
   TGuardian,
   TLocalGuardian,
   TStudent,
   TUserName,
-} from './student.interface';
+} from './student.interface'
 
 const userNameSchema = new Schema<TUserName>({
   firstName: {
@@ -24,7 +24,7 @@ const userNameSchema = new Schema<TUserName>({
     required: [true, 'Last Name is required'],
     maxlength: [20, 'Name can not be more than 20 characters'],
   },
-});
+})
 
 const guardianSchema = new Schema<TGuardian>({
   fatherName: {
@@ -53,7 +53,7 @@ const guardianSchema = new Schema<TGuardian>({
     type: String,
     required: [true, 'Mother Contact No is required'],
   },
-});
+})
 
 const localGuradianSchema = new Schema<TLocalGuardian>({
   name: {
@@ -72,9 +72,9 @@ const localGuradianSchema = new Schema<TLocalGuardian>({
     type: String,
     required: [true, 'Address is required'],
   },
-});
+})
 
-const studentSchema = new Schema<TStudent,StudentModel>(
+const studentSchema = new Schema<TStudent, StudentModel>(
   {
     id: {
       type: String,
@@ -99,7 +99,7 @@ const studentSchema = new Schema<TStudent,StudentModel>(
       },
       required: [true, 'Gender is required'],
     },
-    dateOfBirth: { type: String },
+    dateOfBirth: { type: Date },
     email: {
       type: String,
       required: [true, 'Email is required'],
@@ -144,6 +144,6 @@ const studentSchema = new Schema<TStudent,StudentModel>(
       virtuals: true,
     },
   },
-);
+)
 
-export const Student = model<TStudent>('Student', studentSchema);
+export const Student = model<TStudent>('Student', studentSchema)
