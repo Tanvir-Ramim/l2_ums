@@ -19,6 +19,29 @@ const createAcademicSemesterIntoDD = async (payLoad: TAcademicSemester) => {
   return result
 }
 
+const getAllAcademicSemesterFromDD = async () => {
+  const result = await AcademicSemester.find({}).sort({ createdAt: -1 })
+  return result
+}
+
+const getSingleAcademicSemesterFromDD = async (id: string) => {
+  const result = await AcademicSemester.findById(id)
+  return result
+}
+
+const updateAcademicSemesterIntoDD = async (
+  id: string,
+  payLoad: Partial<TAcademicSemester>,
+) => {
+  const result = await AcademicSemester.findByIdAndUpdate(id, payLoad, {
+    new: true,
+  })
+  return result
+}
+
 export const AcademicSemesterService = {
   createAcademicSemesterIntoDD,
+  getAllAcademicSemesterFromDD,
+  getSingleAcademicSemesterFromDD,
+  updateAcademicSemesterIntoDD,
 }
